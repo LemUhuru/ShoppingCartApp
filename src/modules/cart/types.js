@@ -1,0 +1,7 @@
+export const ADD_PRODUCT = 'cart/ADD_PRODUCT'
+export const REMOVE_PRODUCT = 'cart/REMOVE_PRODUCT'
+export const UPDATE_PRODUCT = 'cart/UPDATE_PRODUCT'
+export const GET_CHECKOUT_SUCCESS = 'cart/GET_CHECKOUT_SUCCESS'
+export const GET_CHECKOUT_FAILURE = 'cart/GET_CHECKOUT_FAILURE'
+export const GET_CHECKOUT_PENDING = 'cart/GET_CHECKOUT_PENDING'
+export const RESET_CART = 'cart/RESET_CART'
