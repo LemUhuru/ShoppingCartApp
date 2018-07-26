@@ -22,7 +22,7 @@ export class SuccessPage extends Component {
   render() {
     const { cart } = this.props
     const { shoppingCart, successMsg } = cart
-    const totalCartItems = parseInt(getCartSize(shoppingCart))
+    const totalCartItems = parseInt(getCartSize(shoppingCart), 10)
     const totalCartPrice = formatCurrency(getCartPrice(shoppingCart))
 
     return (
