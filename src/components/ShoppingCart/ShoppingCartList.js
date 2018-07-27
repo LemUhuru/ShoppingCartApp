@@ -17,16 +17,10 @@ export default class ShoppingCartList extends Component {
           return (
             <li key={id}>
               <div className="cart-item">
-                <QuantityField
-                  shallowProducts={{...shoppingCart}}
-                  product={product}
-                  useCart={true}
-                />
+                <QuantityField product={product} useCart={true} />
                 <span className="cart-item__title">{title}</span>
                 <span className="cart-item__price">{formatCurrency(price)}</span>
-                <RemoveFromCartButton
-                  productId={id}
-                />
+                <RemoveFromCartButton productId={id} />
               </div>
             </li>)
         })}
