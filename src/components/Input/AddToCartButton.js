@@ -14,7 +14,7 @@ export class AddToCartButton extends Component {
   }
 
   render() {
-    const { product, inStock, shoppingCart } = this.props
+    const { product, inStock } = this.props
 
     return (
       <input

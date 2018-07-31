@@ -14,7 +14,7 @@ class ProductDetail extends Component {
     const { products } = inventory
     const { id } = params
     const product = products[id] || {}
-    const { title, price, thumbnail, images=[],
+    const { title, price, images=[],
       description, inStock, reviews=[], tags=[] } = product
     const isStocked = inStock ? "Yes" : "No"
     const labelClass = inStock ? 'label-success' : 'label-danger'

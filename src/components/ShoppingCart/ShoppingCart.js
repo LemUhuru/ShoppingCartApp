@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ShoppingCartList from '../ShoppingCart/ShoppingCartList'
-import { withRouter } from 'react-router-dom'
 import ErrorBanner from '../Shared/ErrorBanner'
 import { NY_SALES_TAX, SHIPPING_PRICE } from '../../constants'
 import { formatCurrency } from '../../helpers/utils'

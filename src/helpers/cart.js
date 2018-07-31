@@ -7,7 +7,7 @@ export function getCartPrice(shoppingCart = {}) {
 
     let cartPrice = products.reduce((acc, product) => {
       let { price, qty = 1 } = product
-      let totalPrice = parseInt(qty) * parseFloat(price)
+      let totalPrice = parseInt(qty, 10) * parseFloat(price)
 
       return acc + totalPrice
     }, 0)

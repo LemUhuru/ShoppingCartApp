@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import _ from 'lodash'
 import { Link } from 'react-router-dom'
 import QuantityField from '../Input/QuantityField'
 import { formatCurrency } from '../../helpers/utils'
@@ -8,7 +7,7 @@ import { getFilteredProductIds } from '../../helpers/inventory'
 
 export default class ProductListingList extends Component {
   render() {
-    const { products, filter = [], updateProduct } = this.props
+    const { products, filter = [] } = this.props
     const productIds = Object.keys(products)
 
     let currentProductIds = []
@@ -23,7 +22,7 @@ export default class ProductListingList extends Component {
       <ul className="product-list">
         {currentProductIds.map(id => {
           const product = products[id]
-          const { title, thumbnail, price, inStock, tags } = product
+          const { title, thumbnail, price, inStock } = product
 
           return (
             <li className="thumbnail" key={id}>

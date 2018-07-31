@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route, withRouter } from 'react-router-dom'
-import { getData } from '../helpers/api'
+import { Route, withRouter } from 'react-router-dom'
 import ProductListing from './Product/ProductListingContainer'
 import ProductDetail from './Product/ProductDetailContainer'
 import ShoppingCart from './ShoppingCart/ShoppingCartContainer'
@@ -11,47 +10,22 @@ import { getInventory } from '../modules/inventory/actions'
 import '../styles/App.css'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      shallowProducts: {}
-    }
-  }
-
-  updateShallowProducts(products) {
-    this.setState({ shallowProducts: products })
-  }
-
   componentDidMount() {
-    const { getInventory, inventory } = this.props
+    const { getInventory } = this.props
     getInventory()
   }
 
   render() {
-    const { cart, inventory } = this.props
+    const { cart } = this.props
     const { isSubmitted } = cart
-    const { shallowProducts } = this.state
 
     return (
       <div className="App container">
         <Header />
         <div className="row">
           <div className="col-md-12 col-md-9">
-            <Route exact path="/" render={(props) => {
-                return <ProductListing
-                  {...props}
-                  updateShallowProducts={this.updateShallowProducts}
-                  shallowProducts={shallowProducts}
-                  />
-              }}/>
-            <Route path="/detail/:id" render={(props) => {
-                return <ProductDetail
-                  {...props}
-                  updateShallowProducts={this.updateShallowProducts}
-                  shallowProducts={shallowProducts}
-                  />
-              }}/>
+            <Route exact path="/" component={ProductListing} />
+            <Route path="/detail/:id" component={ProductDetail} />
           </div>
           {!isSubmitted && <ShoppingCart />}
         </div>

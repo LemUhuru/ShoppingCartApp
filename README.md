@@ -1,4 +1,4 @@
-# WorkMarket Coding Challenge
+# ShoppingCart App
 
 ## Start
 Run the commands, npm run dev to initiate the node/shoppingCart app and create-react-app respectively. A proxy is used in package.json to direct

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateProduct } from '../../modules/cart/actions'
 import { updateInventoryProduct } from '../../modules/inventory/actions'
-import { getProductFromCart } from '../../helpers/cart'
 
 export class QuantityField extends Component {
   constructor(props) {

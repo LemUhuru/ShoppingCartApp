@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { getData } from '../../helpers/api'
 import {
   GET_INVENTORY_FAILURE,
@@ -15,7 +14,6 @@ export function getInventory() {
 
     return getData('/get-items')
     .then(inventory => {
-      const { products } = inventory
       dispatch(getInventorySuccess(inventory))
     })
     .catch(error => {
