@@ -16,7 +16,7 @@ export class QuantityField extends Component {
 
   handleInputChange(event) {
     const { value } = event.target
-    const { updateProducts, product, useCart,
+    const { product, useCart,
       updateProduct, updateInventoryProduct } = this.props
     const newProduct = {...product, qty: value}
 
@@ -30,8 +30,7 @@ export class QuantityField extends Component {
   }
 
   render() {
-    const { min = "1", product, useCart, cart } = this.props
-    const { shoppingCart } = cart
+    const { min = "1", product } = this.props
     const { qty = 1 } =  product
 
     return (

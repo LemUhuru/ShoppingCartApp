@@ -3,7 +3,7 @@ import ProductListingList from './ProductListingList'
 
 export default class ProductListing extends Component {
   render() {
-    const { inventory, addToCart, updateProduct, cart } = this.props
+    const { inventory, addToCart, updateProduct } = this.props
     const { products, filter } = inventory
 
     return (

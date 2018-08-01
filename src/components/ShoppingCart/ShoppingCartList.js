@@ -6,13 +6,13 @@ import { formatCurrency } from '../../helpers/utils'
 export default class ShoppingCartList extends Component {
   render() {
     const { cart } = this.props
-    const { shoppingCart, removeFromCart, updateProduct } = cart
+    const { shoppingCart } = cart
 
     return (
       <ul>
         {Object.keys(shoppingCart).map(productId => {
           const product = shoppingCart[productId]
-          const { id, title, qty, price } = product
+          const { id, title, price } = product
 
           return (
             <li key={id}>

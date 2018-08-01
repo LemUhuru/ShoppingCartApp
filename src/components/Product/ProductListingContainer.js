@@ -4,7 +4,8 @@ import { getInventory, clearFilter } from '../../modules/inventory/actions'
 import { addToCart, updateProduct } from '../../modules/cart/actions'
 
 const mapStateToProps = state => {
-  const { inventory, cart } = state
+  const { inventory } = state
+  
   return {
     inventory,
   }
