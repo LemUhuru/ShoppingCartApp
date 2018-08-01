@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const ErrorBanner = ({ errorMsg }) => {
   return (
@@ -8,5 +9,8 @@ const ErrorBanner = ({ errorMsg }) => {
   )
 }
 
+ErrorBanner.propTypes = {
+  errorMsg: PropTypes.string.isRequired,
+}
 
 export default ErrorBanner

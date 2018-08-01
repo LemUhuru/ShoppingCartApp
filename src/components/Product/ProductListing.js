@@ -1,35 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ProductListingList from './ProductListingList'
+import RemoveFilterButton from '../Input/RemoveFilterButton'
+import PropTypes from 'prop-types'
 
-export default class ProductListing extends Component {
-  render() {
-    const { inventory, addToCart, updateProduct } = this.props
-    const { products, filter } = inventory
+const ProductListing = props => {
+  const { inventory, addToCart, updateProduct, clearFilter } = props
+  const { products, filter } = inventory
 
-    return (
-      <div className="row product-listing">
-        <div className="col-sm-6 col-md-12">
-          <h2>Products</h2>
-          {filter.length > 0 && (
-            <p className="filter-notice">
-              <span>Filtered by: {filter.join(',')}</span>
-              <input
-                onClick={() => this.props.clearFilter()}
-                type="button"
-                value="Remove Filter"
-                className="btn btn-warning filter-btn" />
-            </p>
-          )}
-          <div className="product-list-container">
-            <ProductListingList
-              products={products}
-              filter={filter}
-              addToCart={addToCart}
-              updateProduct={updateProduct}
-            />
-          </div>
+  return (
+    <div className="row product-listing">
+      <div className="col-sm-6 col-md-12">
+        <h2>Products</h2>
+        {filter.length > 0 && (
+          <RemoveFilterButton
+            filter={filter}
+            clearFilter={clearFilter}
+          />)}
+        <div className="product-list-container">
+          <ProductListingList
+            products={products}
+            filter={filter}
+            addToCart={addToCart}
+            updateProduct={updateProduct}
+          />
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+ProductListing.propTypes = {
+  inventory: PropTypes.object.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  updateProduct: PropTypes.func.isRequired,
+  clearFilter: PropTypes.func.isRequired,
+}
+
+export default ProductListing

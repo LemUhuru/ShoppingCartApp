@@ -4,6 +4,7 @@ import ErrorBanner from '../Shared/ErrorBanner'
 import { NY_SALES_TAX, SHIPPING_PRICE } from '../../constants'
 import { formatCurrency } from '../../helpers/utils'
 import { getCartPrice } from '../../helpers/cart'
+import PropTypes from 'prop-types'
 
 export class ShoppingCart extends Component {
   constructor(props) {
@@ -53,5 +54,10 @@ export class ShoppingCart extends Component {
   }
 }
 
+ShoppingCart.propTypes = {
+  cart: PropTypes.object.isRequired,
+  submitCheckout: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+}
 
 export default ShoppingCart

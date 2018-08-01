@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { removeFromCart } from '../../modules/cart/actions'
+import PropTypes from 'prop-types'
 
-export class RemoveFromCartButton extends Component {
-
+class RemoveFromCartButton extends Component {
   constructor(props) {
     super(props)
 
@@ -33,6 +33,11 @@ const mapDispatchToProps = dispatch => {
   return {
     removeFromCart: productId => dispatch(removeFromCart(productId)),
   }
+}
+
+RemoveFromCartButton.propTypes = {
+  productId: PropTypes.string.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
 }
 
 export default connect(

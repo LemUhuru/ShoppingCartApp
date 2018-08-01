@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addToCart } from '../../modules/cart/actions'
 import PropTypes from 'prop-types'
 
-export class AddToCartButton extends Component {
+class AddToCartButton extends Component {
   constructor(props) {
     super(props)
 

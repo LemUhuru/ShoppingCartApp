@@ -4,13 +4,9 @@ import { updateProduct } from '../../modules/cart/actions'
 import { updateInventoryProduct } from '../../modules/inventory/actions'
 import PropTypes from 'prop-types'
 
-export class QuantityField extends Component {
+class QuantityField extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      value: '1',
-    }
 
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -45,13 +41,6 @@ export class QuantityField extends Component {
       }
     }
 
-const mapStateToProps = state => {
-  const { cart } = state
-
-  return {
-    cart,
-  }
-}
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -60,7 +49,14 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+
+QuantityField.propTypes = {
+  product: PropTypes.object.isRequired,
+  updateProduct: PropTypes.func.isRequired,
+  updateInventoryProduct: PropTypes.func.isRequired,
+}
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 )(QuantityField)

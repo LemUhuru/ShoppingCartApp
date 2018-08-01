@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { getCartPrice, getCartSize } from '../helpers/cart'
 import { formatCurrency } from '../helpers/utils'
+import PropTypes from 'prop-types'
 
 export class SuccessPage extends Component {
   constructor(props) {
@@ -53,6 +54,11 @@ const mapDispatchToProps = dispatch => {
   return {
     resetCart: () => dispatch(resetCart()),
   }
+}
+
+SuccessPage.propTypes = {
+  cart: PropTypes.object.isRequired,
+  resetCart: PropTypes.func.isRequired,
 }
 
 export default withRouter(connect(

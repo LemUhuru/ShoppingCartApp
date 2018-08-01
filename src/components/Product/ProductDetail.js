@@ -5,12 +5,12 @@ import ProductTagList from './ProductTags'
 import AddToCartButton from '../Input/AddToCartButton'
 import ProductDetailGallery from './ProductDetailGallery'
 import ProductReviews from './ProductReviews'
+import PropTypes from 'prop-types'
 
 class ProductDetail extends Component {
   render() {
     const { inventory, addFilter,
-      history, match: { params },
-      shallowProducts, updateShallowProducts } = this.props
+      history, match: { params } } = this.props
     const { products } = inventory
     const { id } = params
     const product = products[id] || {}
@@ -35,19 +35,21 @@ class ProductDetail extends Component {
             />
             <AddToCartButton
               product={product}
-              inStock={inStock}
-              shallowProducts={shallowProducts}
-            />
-            <QuantityField
-              product={product}
-              shallowProducts={shallowProducts}
-              updateShallowProducts={updateShallowProducts}
+              inStock={!!inStock}
               />
+            <QuantityField product={product} />
           </div>
         </div>
         <ProductReviews reviews={reviews} />
       </div>)
   }
+}
+
+ProductDetail.propTypes = {
+  inventory: PropTypes.object.isRequired,
+  addFilter: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default ProductDetail

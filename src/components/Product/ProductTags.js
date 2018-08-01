@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class ProductTagsList extends Component {
   constructor(props) {
@@ -25,4 +26,10 @@ export default class ProductTagsList extends Component {
       </ul>
     )
   }
+}
+
+ProductTagsList.propTypes = {
+  tags: PropTypes.array.isRequired,
+  addFilter: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 }
