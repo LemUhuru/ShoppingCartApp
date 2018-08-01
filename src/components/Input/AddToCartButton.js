@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addToCart } from '../../modules/cart/actions'
+import PropTypes from 'prop-types'
 
 export class AddToCartButton extends Component {
   constructor(props) {
@@ -32,6 +33,12 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addToCart: (product) => dispatch(addToCart(product))
   }
+}
+
+AddToCartButton.propTypes = {
+  product: PropTypes.object.isRequired,
+  inStock: PropTypes.bool.isRequired,
+  addToCart: PropTypes.func.isRequired,
 }
 
 export default connect(
