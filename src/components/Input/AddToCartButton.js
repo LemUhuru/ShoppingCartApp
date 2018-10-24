@@ -3,30 +3,18 @@ import { connect } from 'react-redux'
 import { addToCart } from '../../modules/cart/actions'
 import PropTypes from 'prop-types'
 
-class AddToCartButton extends Component {
-  constructor(props) {
-    super(props)
+const AddToCartButton = props => {
+  const { product, inStock, addToCart } = props
 
-    this.handleAddToCart = this.handleAddToCart.bind(this)
-  }
-
-  handleAddToCart(event, product) {
-    this.props.addToCart(product)
-  }
-
-  render() {
-    const { product, inStock } = this.props
-
-    return (
-      <input
-        onClick={() => this.handleAddToCart(null, product)}
-        className="btn btn-primary"
-        type="button"
-        value="Add to Cart"
-        disabled={!inStock}
-        />
-    )
-  }
+  return (
+    <input
+      onClick={() => addToCart(product)}
+      className="btn btn-primary"
+      type="button"
+      value="Add to Cart"
+      disabled={!inStock}
+      />
+  )
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -6,7 +6,7 @@ const RemoveFilterButton = ({ filter, clearFilter }) => {
     <p className="filter-notice">
       <span>Filtered by: {filter.join(',')}</span>
       <input
-        onClick={() => this.props.clearFilter()}
+        onClick={() => clearFilter()}
         type="button"
         value="Remove Filter"
         className="btn btn-warning filter-btn" />
