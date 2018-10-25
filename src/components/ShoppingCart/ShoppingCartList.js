@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import RemoveFromCartButton from '../Input/RemoveFromCartButton'
-import QuantityField from '../Input/Containers/QuantityFieldContainer'
+import QuantityField from '../Input/QuantityField'
 import { formatCurrency } from '../../helpers/utils'
 import PropTypes from 'prop-types'
 
-const ShoppingCartList = ({ cart }) => {
+const ShoppingCartList = ({ cart, removeFromCart }) => {
   const { shoppingCart } = cart
+
 
   return (
     <ul>
@@ -19,7 +20,7 @@ const ShoppingCartList = ({ cart }) => {
               <QuantityField product={product} useCart={true} />
               <span className="cart-item__title">{title}</span>
               <span className="cart-item__price">{formatCurrency(price)}</span>
-              <RemoveFromCartButton productId={id} />
+              <RemoveFromCartButton productId={id} removeFromCart={removeFromCart} />
             </div>
           </li>)
       })}

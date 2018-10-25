@@ -5,6 +5,7 @@ import { NY_SALES_TAX, SHIPPING_PRICE } from '../../constants'
 import { formatCurrency } from '../../helpers/utils'
 import { getCartPrice } from '../../helpers/cart'
 import PropTypes from 'prop-types'
+import { removeFromCart } from '../../modules/cart/actions';
 
 export class ShoppingCart extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export class ShoppingCart extends Component {
   }
 
   render() {
-    const { cart } = this.props
+    const { cart, removeFromCart } = this.props
     const { isError, errorMsg, shoppingCart } = cart
     let totalPrice = getCartPrice(shoppingCart)
     let formattedPrice = formatCurrency(totalPrice)
@@ -38,6 +39,7 @@ export class ShoppingCart extends Component {
         <div className="cart-sidebar__content">
           <ShoppingCartList
             cart={cart}
+            removeFromCart={removeFromCart}
           />
           <p className="shipping-price">Shipping: {formatCurrency(SHIPPING_PRICE)}</p>
           <p className="sales-tax">Tax: {NY_SALES_TAX} </p>
