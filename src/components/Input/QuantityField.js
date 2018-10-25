@@ -5,11 +5,19 @@ import { updateInventoryProduct } from '../../modules/inventory/actions'
 import PropTypes from 'prop-types'
 
 class QuantityField extends Component {
+  static propTypes = {
+    product: PropTypes.object.isRequired,
+    updateProduct: PropTypes.func.isRequired,
+    updateInventoryProduct: PropTypes.func.isRequired,
+  }
+  
   constructor(props) {
     super(props)
 
     this.handleInputChange = this.handleInputChange.bind(this)
   }
+
+  
 
   handleInputChange(event) {
     const { value } = event.target
@@ -17,7 +25,7 @@ class QuantityField extends Component {
       updateProduct, updateInventoryProduct } = this.props
     const newProduct = {...product, qty: value}
 
-    if(useCart) {
+    if (useCart) {
       updateProduct(newProduct)
     } else {
       updateInventoryProduct(newProduct)
@@ -50,11 +58,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-QuantityField.propTypes = {
-  product: PropTypes.object.isRequired,
-  updateProduct: PropTypes.func.isRequired,
-  updateInventoryProduct: PropTypes.func.isRequired,
-}
+
 
 export default connect(
   null,
