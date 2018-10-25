@@ -1,9 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { addToCart } from '../../modules/cart/actions'
-import PropTypes from 'prop-types'
+// @flow
 
-const AddToCartButton = props => {
+import * as React from 'react';
+
+type Props = {
+  product: {},
+  inStock: boolean,
+  addToCart: (product: {}) => void,
+}
+
+const AddToCartButton = (props: Props) => {
   const { product, inStock, addToCart } = props
 
   return (
@@ -13,23 +18,8 @@ const AddToCartButton = props => {
       type="button"
       value="Add to Cart"
       disabled={!inStock}
-      />
-  )
+      />: React.Element<'input'>
+      )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addToCart: (product) => dispatch(addToCart(product))
-  }
-}
-
-AddToCartButton.propTypes = {
-  product: PropTypes.object.isRequired,
-  inStock: PropTypes.bool.isRequired,
-  addToCart: PropTypes.func.isRequired,
-}
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(AddToCartButton)
+export default AddToCartButton;

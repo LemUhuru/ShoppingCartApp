@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import QuantityField from '../Input/QuantityField'
 import { formatCurrency } from '../../helpers/utils'
-import AddToCartButton from '../Input/AddToCartButton'
+import AddToCartButton from '../Input/Containers/AddToCartButtonContainer'
 import { getFilteredProductIds } from '../../helpers/inventory'
 import PropTypes from 'prop-types'
 
