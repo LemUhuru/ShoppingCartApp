@@ -1,28 +1,19 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { updateProduct } from '../../modules/cart/actions'
-import { updateInventoryProduct } from '../../modules/inventory/actions'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 
-class QuantityField extends Component {
-  static propTypes = {
-    product: PropTypes.object.isRequired,
-    updateProduct: PropTypes.func.isRequired,
-    updateInventoryProduct: PropTypes.func.isRequired,
-  }
+type Props = {
+  min: number,
+  product: { qty: number, },
+  useCart: boolean,
+  updateProduct: (product: {}) => void,
+  updateInventoryProduct: (product: {}) => void
+}
+
+class QuantityField extends React.Component<Props, void> {
   
-  constructor(props) {
-    super(props)
-
-    this.handleInputChange = this.handleInputChange.bind(this)
-  }
-
-  
-
-  handleInputChange(event) {
-    const { value } = event.target
-    const { product, useCart,
-      updateProduct, updateInventoryProduct } = this.props
+  handleInputChange = (event: SyntheticInputEvent<HTMLButtonElement>) => {
+    const { value } = (event.currentTarget: HTMLButtonElement)
+    const { product, useCart, updateProduct, updateInventoryProduct } = this.props
     const newProduct = {...product, qty: value}
 
     if (useCart) {
@@ -31,7 +22,7 @@ class QuantityField extends Component {
       updateInventoryProduct(newProduct)
     }
 
-    this.setState({ value })
+    // this.setState({ value })
   }
 
   render() {
@@ -45,22 +36,10 @@ class QuantityField extends Component {
         min={min}
         value={qty}
         onChange={this.handleInputChange}
-        />)
+        />: React.Element<'input'>
+        )
       }
     }
 
 
-const mapDispatchToProps = dispatch => {
-  return {
-    updateProduct: (product) => dispatch(updateProduct(product)),
-    updateInventoryProduct: (product) => dispatch(updateInventoryProduct(product)),
-  }
-}
-
-
-
-
-export default connect(
-  null,
-  mapDispatchToProps,
-)(QuantityField)
+export default QuantityField

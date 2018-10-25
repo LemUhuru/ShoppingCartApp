@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import QuantityField from '../Input/QuantityField'
+import QuantityField from '../Input/Containers/QuantityFieldContainer'
 import { formatCurrency } from '../../helpers/utils'
 import AddToCartButton from '../Input/Containers/AddToCartButtonContainer'
 import { getFilteredProductIds } from '../../helpers/inventory'

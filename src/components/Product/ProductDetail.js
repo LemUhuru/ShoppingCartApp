@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { formatCurrency } from '../../helpers/utils'
-import QuantityField from '../Input/QuantityField'
+import QuantityField from '../Input/Containers/QuantityFieldContainer'
 import ProductTagList from './ProductTags'
 import AddToCartButton from '../Input/Containers/AddToCartButtonContainer'
 import ProductDetailGallery from './ProductDetailGallery'
