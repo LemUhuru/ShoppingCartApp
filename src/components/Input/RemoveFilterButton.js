@@ -1,7 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 
-const RemoveFilterButton = ({ filter, clearFilter }) => {
+type Props = {
+  filter: Array<Object>,
+  clearFilter: () => void,
+}
+
+const RemoveFilterButton = (props:Props) => {
+  const { filter, clearFilter } = props
+
   return (
     <p className="filter-notice">
       <span>Filtered by: {filter.join(',')}</span>
@@ -10,13 +17,8 @@ const RemoveFilterButton = ({ filter, clearFilter }) => {
         type="button"
         value="Remove Filter"
         className="btn btn-warning filter-btn" />
-    </p>
+    </p>: React.Element<'p'>
   )
-}
-
-RemoveFilterButton.propTypes = {
-  filter: PropTypes.array.isRequired,
-  clearFilter: PropTypes.func.isRequired,
 }
 
 export default RemoveFilterButton

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
-import ShoppingCart from '../ShoppingCart/ShoppingCart'
+import ShoppingCart from '../../ShoppingCart/ShoppingCart'
 import { addToCart, removeFromCart,
-  updateProduct, submitCheckout } from '../../modules/cart/actions'
+  updateProduct, submitCheckout } from '../../../modules/cart/actions'
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => {

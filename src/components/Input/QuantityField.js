@@ -10,6 +10,9 @@ type Props = {
 }
 
 class QuantityField extends React.Component<Props, void> {
+  /* 
+    Review why component state wasn't added here.
+  */
   
   handleInputChange = (event: SyntheticInputEvent<HTMLButtonElement>) => {
     const { value } = (event.currentTarget: HTMLButtonElement)
