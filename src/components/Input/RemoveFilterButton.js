@@ -6,7 +6,7 @@ type Props = {
   clearFilter: () => void,
 }
 
-const RemoveFilterButton = (props:Props) => {
+const RemoveFilterButton = (props:Props): React.Element<'p'> => {
   const { filter, clearFilter } = props
 
   return (
@@ -17,7 +17,7 @@ const RemoveFilterButton = (props:Props) => {
         type="button"
         value="Remove Filter"
         className="btn btn-warning filter-btn" />
-    </p>: React.Element<'p'>
+    </p>
   )
 }
 

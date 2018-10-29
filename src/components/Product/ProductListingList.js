@@ -1,4 +1,5 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 import QuantityField from '../Input/Containers/QuantityFieldContainer'
 import { formatCurrency } from '../../helpers/utils'
@@ -6,7 +7,13 @@ import AddToCartButton from '../Input/Containers/AddToCartButtonContainer'
 import { getFilteredProductIds } from '../../helpers/inventory'
 import PropTypes from 'prop-types'
 
-const ProductListingList = ({ products, filter = [] }) => {
+type Props = {
+  products: {},
+  filter: Array<string>
+}
+
+const ProductListingList = (props: Props): React.Element<'ul'> => {
+  const { products, filter } = props
   const productIds = Object.keys(products)
 
   let currentProductIds = []
@@ -20,7 +27,8 @@ const ProductListingList = ({ products, filter = [] }) => {
    return (
      <ul className="product-list">
        {currentProductIds.map(id => {
-         const product = products[id]
+         const product: { title: string, thumbnail: string, price: number,
+        inStock: boolean } = products[id]
          const { title, thumbnail, price, inStock } = product
 
          return (
@@ -49,9 +57,6 @@ const ProductListingList = ({ products, filter = [] }) => {
      </ul>
    )}
 
-ProductListingList.propTypes = {
-  products: PropTypes.object.isRequired,
-  filter: PropTypes.array.isRequired,
-}
+
 
 export default ProductListingList

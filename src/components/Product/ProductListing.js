@@ -1,9 +1,16 @@
-import React from 'react'
+// @flow
+import * as React from 'react'
 import ProductListingList from './ProductListingList'
 import RemoveFilterButton from '../Input/RemoveFilterButton'
-import PropTypes from 'prop-types'
 
-const ProductListing = props => {
+type Props = {
+  inventory: { products: {}, filter: Array<Object> },
+  addToCart: () => void,
+  updateProduct: () => void,
+  clearFilter: () => void,
+}
+
+const ProductListing = (props: Props): React.Element<'div'> => {
   const { inventory, addToCart, updateProduct, clearFilter } = props
   const { products, filter } = inventory
 
@@ -29,11 +36,5 @@ const ProductListing = props => {
   )
 }
 
-ProductListing.propTypes = {
-  inventory: PropTypes.object.isRequired,
-  addToCart: PropTypes.func.isRequired,
-  updateProduct: PropTypes.func.isRequired,
-  clearFilter: PropTypes.func.isRequired,
-}
 
 export default ProductListing

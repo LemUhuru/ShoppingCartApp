@@ -1,9 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 
-const ProductDetailGallery = ({ images, title }) => {
+type Props = {
+  images: Array<string>, 
+  title?: string
+}
+
+const ProductDetailGallery = (props: Props): React.Element<'div'> => {
+  const { images, title } = props
   const mainImage = images && images[0]
-  const productImages = images.map((image,index) => {
+  const productImages: Array<React.Element<'li'>> = images.map((image: string, index: number) => {
     return <li key={index}><img src={image} alt={title} /></li>
   })
 
@@ -14,12 +20,7 @@ const ProductDetailGallery = ({ images, title }) => {
       </ul>
       <img className="main-img" src={mainImage} alt={title} />
     </div>
-  )
-}
-
-ProductDetailGallery.propTypes = {
-  images: PropTypes.array.isRequired,
-  title: PropTypes.string,
+    )
 }
 
 

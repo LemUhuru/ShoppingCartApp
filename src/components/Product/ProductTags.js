@@ -1,35 +1,30 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// @flow
+import * as React from 'react'
 
-export default class ProductTagsList extends Component {
-  constructor(props) {
-    super(props)
+type Props = {
+  tags: Array<string>,
+  addFilter: (tag: string) => void,
+  history: { push: (path: string) => void }
+}
 
-    this.handleClick = this.handleClick.bind(this)
-  }
+const ProductTagList = (props: Props): React.Element<'ul'> => {
+  const { tags, addFilter, history } = props
 
-  handleClick(event) {
-    const tag = event.target.innerHTML
-    const { addFilter, history } = this.props
-    addFilter(tag)
+  const handleClick = (event: SyntheticInputEvent<HTMLElement>) => {
+    const { innerHTML } = (event.target: HTMLElement)
+    
+    addFilter(innerHTML)
     history.push('/')
   }
 
-  render() {
-    const { tags } = this.props
-
-    return (
-      <ul onClick={this.handleClick}>
-        {tags.map((tag, index) => {
-          return <li key={index} className="product-tag label label-default ">{tag}</li>
-        })}
-      </ul>
-    )
-  }
+  return (
+    <ul onClick={handleClick}>
+      {tags.map((tag, index) => {
+        return <li key={index} className="product-tag label label-default ">{tag}</li>
+      })}
+    </ul>
+  )
 }
 
-ProductTagsList.propTypes = {
-  tags: PropTypes.array.isRequired,
-  addFilter: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired,
-}
+
+export default ProductTagList

@@ -7,7 +7,7 @@ type Props = {
   addToCart: (product: {}) => void,
 }
 
-const AddToCartButton = (props: Props) => {
+const AddToCartButton = (props: Props): React.Element<'input'> => {
   const { product, inStock, addToCart } = props
 
   return (
@@ -17,7 +17,7 @@ const AddToCartButton = (props: Props) => {
       type="button"
       value="Add to Cart"
       disabled={!inStock}
-      />: React.Element<'input'>
+      />
       )
 }
 
