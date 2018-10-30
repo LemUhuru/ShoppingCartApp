@@ -14,7 +14,7 @@ class QuantityField extends React.Component<Props, void> {
     Review why component state wasn't added here.
   */
   
-  handleInputChange = (event: SyntheticInputEvent<HTMLButtonElement>): React.Element<'input'> => {
+  handleInputChange = (event: SyntheticInputEvent<HTMLButtonElement>) => {
     const { value } = (event.currentTarget: HTMLButtonElement)
     const { product, useCart, updateProduct, updateInventoryProduct } = this.props
     const newProduct = {...product, qty: value}
@@ -28,7 +28,7 @@ class QuantityField extends React.Component<Props, void> {
     // this.setState({ value })
   }
 
-  render() {
+  render(): React.Element<'input'> {
     const { min = "1", product } = this.props
     const { qty = 1 } =  product
 

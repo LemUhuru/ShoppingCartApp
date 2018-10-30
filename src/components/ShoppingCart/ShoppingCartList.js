@@ -1,16 +1,22 @@
-import React, { Component } from 'react'
+// @flow
+import * as React from 'react'
 import RemoveFromCartButton from '../Input/RemoveFromCartButton'
 import QuantityField from '../Input/Containers/QuantityFieldContainer'
 import { formatCurrency } from '../../helpers/utils'
-import PropTypes from 'prop-types'
 
-const ShoppingCartList = ({ cart, removeFromCart }) => {
+type Props = {
+  cart: { shoppingCart: { productId: string } },
+  removeFromCart: (productId: string) => void,
+}
+
+const ShoppingCartList = (props: Props): React.Element<'ul'> => {
+  const { cart, removeFromCart } = props
   const { shoppingCart } = cart
 
   return (
     <ul>
-      {Object.keys(shoppingCart).map(productId => {
-        const product = shoppingCart[productId]
+      {Object.keys(shoppingCart).map((productId: string) => {
+        const product: { id: string, title: string, price: number } = shoppingCart[productId]
         const { id, title, price } = product
 
         return (
@@ -25,10 +31,6 @@ const ShoppingCartList = ({ cart, removeFromCart }) => {
       })}
     </ul>
   )
-}
-
-ShoppingCartList.propTypes = {
-  shoppingCart: PropTypes.object.isRequired,
 }
 
 export default ShoppingCartList

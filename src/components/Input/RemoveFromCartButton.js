@@ -3,8 +3,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 
 type Props = {
-  productId: number,
-  removeFromCart: (productId: number) => void,
+  productId: string,
+  removeFromCart: (productId: string) => void,
 }
 
 const RemoveFromCartButton = (props: Props): React.Element<'input'> => {

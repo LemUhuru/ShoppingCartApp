@@ -1,16 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 
-const ErrorBanner = ({ errorMsg }) => {
+type Props = {
+  errorMsg: string,
+}
+
+const ErrorBanner = (props: Props): React.Element<'div'> => {
+  const { errorMsg } = props
+
   return (
     <div className="alert alert-danger" role="alert">
       {errorMsg}
     </div>
   )
-}
-
-ErrorBanner.propTypes = {
-  errorMsg: PropTypes.string.isRequired,
 }
 
 export default ErrorBanner
