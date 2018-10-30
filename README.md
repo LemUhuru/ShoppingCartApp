@@ -8,4 +8,7 @@ api calls to localhost:3001/
 React, Redux, Redux Thunk, Flow Type, NodeJS, Bootstrap, Create-React-App, 
 
 ## Improvements:
-App needs e2e, UI, & Unit tests. Although I did not have time to set any of these up.
+Testing
+* e2e
+* UI
+* Unit 
