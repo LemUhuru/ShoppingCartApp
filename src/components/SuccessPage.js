@@ -1,67 +1,44 @@
-import React, { Component } from 'react'
-import { resetCart } from '../modules/cart/actions'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+// @flow
+import * as React from 'react'
 import { getCartPrice, getCartSize } from '../helpers/cart'
 import { formatCurrency } from '../helpers/utils'
-import PropTypes from 'prop-types'
 
-export class SuccessPage extends Component {
-  constructor(props) {
-    super(props)
+type Props = {
+  resetCart: () => void,
+  history: () => void,
+  cart: { shoppingCart: {}, successMsg: string }
+}
 
-    this.handleButtonClick = this.handleButtonClick.bind(this)
-  }
+const SuccessPage = (props: Props): React.Element<'div'> => {
+  const { cart } = props
+  const { shoppingCart, successMsg } = cart
+  const totalCartItems = parseInt(getCartSize(shoppingCart), 10)
+  const totalCartPrice = formatCurrency(getCartPrice(shoppingCart))
 
-  handleButtonClick() {
-    const { resetCart, history, } = this.props
+    
+ const handleButtonClick = (event: SyntheticInputEvent<HTMLButtonElement>) =>  {
+    const { resetCart, history } = props
+
     resetCart()
     history.push('/')
   }
 
-  render() {
-    const { cart } = this.props
-    const { shoppingCart, successMsg } = cart
-    const totalCartItems = parseInt(getCartSize(shoppingCart), 10)
-    const totalCartPrice = formatCurrency(getCartPrice(shoppingCart))
-
-    return (
-      <div className="success-page">
-        <h1>Thank You!</h1>
-        <p>{successMsg}</p>
-        <p>You have purchased {totalCartItems} items for {totalCartPrice}</p>
-        <p>Your order is on the way :)</p>
-        <input
-          className="btn btn-success"
-          type="button"
-          value="Continue Shopping"
-          onClick={this.handleButtonClick}
-        />
-      </div>
-    )
-  }
+  return (
+    <div className="success-page">
+      <h1>Thank You!</h1>
+      <p>{successMsg}</p>
+      <p>You have purchased {totalCartItems} items for {totalCartPrice}</p>
+      <p>Your order is on the way :)</p>
+      <input
+        className="btn btn-success"
+        type="button"
+        value="Continue Shopping"
+        onClick={handleButtonClick}
+      />
+    </div>
+  )
 }
 
-const mapStateToProps = state => {
-  const { cart } = state
 
-  return {
-    cart,
-  }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    resetCart: () => dispatch(resetCart()),
-  }
-}
-
-SuccessPage.propTypes = {
-  cart: PropTypes.object.isRequired,
-  resetCart: PropTypes.func.isRequired,
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SuccessPage))
+export default SuccessPage

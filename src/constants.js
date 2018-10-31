@@ -1,2 +1,8 @@
-export const NY_SALES_TAX = "8.88%"
-export const SHIPPING_PRICE =  9.99
+// @flow
+const NY_SALES_TAX: string = "8.88%"
+const SHIPPING_PRICE: number =  9.99
+
+export {
+    NY_SALES_TAX,
+    SHIPPING_PRICE
+}

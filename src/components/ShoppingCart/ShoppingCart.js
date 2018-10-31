@@ -4,18 +4,17 @@ import ErrorBanner from '../Shared/ErrorBanner'
 import { NY_SALES_TAX, SHIPPING_PRICE } from '../../constants'
 import { formatCurrency } from '../../helpers/utils'
 import { getCartPrice } from '../../helpers/cart'
-import { removeFromCart } from '../../modules/cart/actions';
-
 
 type Props = {
   cart: {},
   submitCheckout: () => void,
   history: { push: { path: string } },
+  removeFromCart: (productId: string) => void,
 }
 
 
 const ShoppingCart = (props: Props): React.Element<'div'> => {
-  const { cart, submitCheckout, history } = props
+  const { cart, submitCheckout, history, removeFromCart } = props
   const { isError, errorMsg, shoppingCart } = cart
   let totalPrice = getCartPrice(shoppingCart)
   let formattedPrice = formatCurrency(totalPrice)

@@ -5,7 +5,7 @@ function formatCurrency(amount: number): string {
 
 // Should obj.constructor be typed?
 
-function isObjEmpty(obj: { key: any }): boolean {
+function isObjEmpty(obj: {}): boolean {
   return Object.keys(obj).length === 0 && obj.constructor === Object
 }
 

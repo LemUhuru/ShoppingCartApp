@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+// @flow
+import * as React from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import ProductListing from './Product/Containers/ProductListingContainer'
 import ProductDetail from './Product/Containers/ProductDetailContainer'
@@ -9,13 +10,19 @@ import { connect } from 'react-redux'
 import { getInventory } from '../modules/inventory/actions'
 import '../styles/App.css'
 
-class App extends Component {
-  componentDidMount() {
+type Props = {
+  getInventory: () => void,
+  cart: { isSubmitted: boolean },
+}
+
+class App extends React.Component<Props> {
+
+  componentDidMount(): void  {
     const { getInventory } = this.props
     getInventory()
   }
 
-  render() {
+  render(): React.Element<'div'> {
     const { cart } = this.props
     const { isSubmitted } = cart
 

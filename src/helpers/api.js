@@ -1,7 +1,8 @@
+// @flow
 import axios from 'axios'
 import { isObjEmpty } from './utils'
 
-export async function getData(url) {
+export async function getData(url: string) {
   try {
     let response = await axios.get(url)
     let data = await checkStatus(response)
@@ -9,22 +10,23 @@ export async function getData(url) {
   }
   catch (error) {
     console.log(`Error: ${error.message}`)
+    return error
   }
 }
 
-export function checkStatus(response) {
-  const { status } = response
+export function checkStatus(response: { status: string, data: {} }): Promise<Object> {
+  const { status, data } = response
 
   if (status === 200 || status === 'success') {
-    return Promise.resolve(response.data)
+    return Promise.resolve(data)
   }
 
-  return Promise.reject(response.data)
+  return Promise.reject(data)
 }
 
 
 
-export function formatShoppingCart(shoppingCart = {}) {
+export function formatShoppingCart(shoppingCart: {} = {}): {} {
   let cartItems =  {
     items: []
   }
